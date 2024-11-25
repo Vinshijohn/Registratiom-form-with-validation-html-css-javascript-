@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Registration Form</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #093644;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: rgb(26, 128, 119);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+.radio-group input[type="radio"] {
+    margin-right: 1000px;
+}  
+
+h1, h2 {
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input, select {
+    width: 500px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*button {
+    width: 10%;
+    padding:10px 20px;
+    background-color: #28a745;
+    color: white;
+    border:black;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+    
+}*/
+.button-container {
+    
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; 
+}
+
+.button-container button {
+    margin: 0 10px; 
+    width: 15%;
+    background-color: #2cbe4c;
+}
+
+
+
+button:hover {
+    background-color: #218838;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #141201;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #e7ee8e;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+.hidden {
+    display: none; 
+}
+
+#successMessage {
+    background-color: #d4edda; 
+    color: #155724; 
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><b>Registration Form</b></h1>
+        <form id="registrationForm">
+            <label for="firstName"><b>First Name:</b></label><br>
+            <input type="text" id="firstname" placeholder="Enter Your First Name" required><br>
+            <label for="firstName"><b>Last Name:</b></label><br>
+            <input type="text" id="lastname" placeholder="Enter Your Last Name" required><br>
+            <label for="firstName"><b>Email:</b></label><br>
+            <input type="email" id="email" placeholder="Enter Your Email" required><br>
+            <label for="firstName"><b>Contact Number:</b></label><br>
+            <input type="tel" id="contact" placeholder="Enter Your Contact Number" required><br>
+            <label for="firstName"><b>College Name:</b></label><br>
+            <input type="text" id="college" placeholder="Enter Your College Name" required><br>
+            <label for="firstName"><b>CGPA:</b></label><br>
+            <input type="number" id="cgpa" placeholder="Enter Your CGPA" step="0.01" required><br>
+            
+            <label for="course"><b>Course:</b></label><br>
+            <select id="course" required>
+                <option value="" disabled selected>Select Course</option>
+                <option value="B.E">B.E CSE</option>
+                <option value="B.tech">B.Tech IT</option>
+                <option value="MCA">B.Tech AIDS</option>
+                <option value="M.Tech">BCA</option>
+                <option value="MBA">Bsc CS</option>
+            </select><br>
+
+            <label for="domain"><b>Domain:</b></label><br>
+            <select id="domain" required>
+                <option value="" disabled selected>Select Domain</option>
+                <option value="UI/UX">Frontend Developer</option>
+                <option value="Data Science">Backend Developer</option>
+                <option value="Networking">Marketing</option>
+                <option value="IOT">Support Calls</option>
+            </select><br><br>
+
+            <div class="radio-group">
+                <span><b>Passing Out Year:</b></span><br>
+                <label><input type="radio" name="year" value="2024" required> 2024</label><br>
+                <label><input type="radio" name="year" value="2025"> 2025</label><br>
+            </div>
+
+            <div class="radio-group">
+                <span><b>Location:</b></span><br>
+                <label><input type="radio" name="location" value="Kundrathur" required>Kundrathur</label><br>
+                <label><input type="radio" name="location" value="Pallavaram">Pallavaram</label><br>
+                <label><input type="radio" name="location" value="Chrompet"> Chrompet</label><br><br>
+            </div>
+            <label for="resume"><b>Upload Resume:</b></label><br>
+            <input type="file" id="resume" accept=".pdf,.doc,.docx" required><br>
+            <div class="button-container">
+                <button type="submit">Register</button><br><br>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+        <br>
+        <br>
+        <h2>Registered Information</h2>
+        <table id="infoTable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>College</th>
+                    <th>CGPA</th>
+                    <th>Course</th>
+                    <th>Domain</th>
+                    <th>Year</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+    <div id="successMessage" class="hidden">
+        <p>Registration Successful!</p>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
